@@ -385,12 +385,18 @@ MONTAZ = (
 )
 
 # --- Harvester: kwerendy wyszukiwarki wewnątrz grup ---------------------------
+# Mniej kwerend = krótszy przebieg. Pierwszy test w chmurze: 21 grup × 6 kwerend
+# przekroczyło 25 min. Trzy kwerendy PL i dwie DE łapią to samo, co sześć:
+# wyszukiwarka FB i tak dopasowuje odmiany.
 SEARCH_QUERIES = {
-    "PL": ["podłogę", "puzzle", "mata gumowa", "wykładzina", "wygłuszenie", "maty na siłownię"],
-    "DE": ["Boden", "Bodenbelag", "Gummimatten", "Puzzlematten", "Trittschall", "Bodenschutzmatte"],
+    "PL": ["podłogę", "puzzle", "maty"],
+    "DE": ["Boden", "Matten"],
 }
 MAX_POST_AGE_DAYS = 7
-MAX_POSTS_PER_QUERY = 12
+MAX_POSTS_PER_QUERY = 8
+HARVEST_TIME_BUDGET_SEC = int(os.environ.get("HARVEST_TIME_BUDGET_SEC", "900"))
+# Do testów: ogranicz liczbę grup w przebiegu (0 = wszystkie).
+GROUPS_LIMIT = int(os.environ.get("GROUPS_LIMIT", "0") or 0)
 
 # --- WhatsApp / Twilio ------------------------------------------------------
 TWILIO_ACCOUNT_SID = os.environ.get("TWILIO_ACCOUNT_SID")

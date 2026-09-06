@@ -3,3 +3,4 @@
 __pycache__/
 state/fb_storage_state.json
 *.tmp
+debug/

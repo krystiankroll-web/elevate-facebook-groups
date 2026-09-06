@@ -77,11 +77,15 @@ def process_replies(state: State, dry_run: bool, headed: bool) -> None:
 
 def harvest_and_notify(state: State, dry_run: bool, headed: bool) -> None:
     monitored = groups.monitored()
-    log(f"[harvest] grup: {len(monitored)}, okno: {config.MAX_POST_AGE_DAYS} dni")
+    if config.GROUPS_LIMIT:
+        monitored = monitored[: config.GROUPS_LIMIT]
+    log(f"[harvest] grup: {len(monitored)}, okno: {config.MAX_POST_AGE_DAYS} dni, "
+        f"budżet: {config.HARVEST_TIME_BUDGET_SEC}s")
     try:
         posts = fb_browser.harvest(
             monitored, config.SEARCH_QUERIES, config.MAX_POST_AGE_DAYS,
             max_per_query=config.MAX_POSTS_PER_QUERY, headless=not headed, log=log,
+            time_budget_sec=config.HARVEST_TIME_BUDGET_SEC,
         )
     except fb_browser.SessionExpired as exc:
         wa.send_alert(str(exc), dry_run=dry_run)

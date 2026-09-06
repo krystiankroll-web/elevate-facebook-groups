@@ -24,6 +24,10 @@ on:
         description: "Nic nie wysyłaj i nie publikuj"
         default: false
         type: boolean
+      groups_limit:
+        description: "Ile grup przejrzeć (0 = wszystkie) — do testów"
+        default: "0"
+        type: string
 
 permissions:
   contents: write
@@ -69,7 +73,17 @@ jobs:
           TWILIO_WHATSAPP_NUMBER: ${{ secrets.TWILIO_WHATSAPP_NUMBER }}
           WHATSAPP_TO: ${{ secrets.WHATSAPP_TO }}
           FB_STORAGE_STATE: ${{ secrets.FB_STORAGE_STATE }}
+          GROUPS_LIMIT: ${{ inputs.groups_limit || '0' }}
         run: python run.py ${{ steps.mode.outputs.mode }} ${{ steps.mode.outputs.flags }}
+
+      - name: Zrzuty diagnostyczne (gdy kwerenda zwróciła 0)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: debug-screenshots
+          path: debug/
+          if-no-files-found: ignore
+          retention-days: 3
 
       - name: Zapisz stan do repo
         if: always()

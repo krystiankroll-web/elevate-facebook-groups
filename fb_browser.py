@@ -150,23 +150,75 @@ def parse_post_dialog(text: str) -> dict:
 _COMMENT_BTN = re.compile(r"koment|comment", re.IGNORECASE)
 
 
+_BLOCK_MARKERS = re.compile(
+    r"Zaloguj się do Facebooka|Log in to Facebook|tymczasowo zablokow|temporarily blocked|"
+    r"Potwierdź, że to Ty|Confirm it's you|nietypow\w* aktywno|unusual activity",
+    re.IGNORECASE,
+)
+
+
+def _page_state(page) -> str:
+    """Krótka diagnoza tego, co Facebook faktycznie pokazał — do logu przy zerach."""
+    try:
+        body = page.inner_text("body")[:4000]
+    except Exception:  # noqa: BLE001
+        return "brak dostępu do body"
+    if "login" in page.url:
+        return "URL loginu — sesja wylogowana"
+    m = _BLOCK_MARKERS.search(body)
+    if m:
+        return f"blokada/checkpoint: '{m.group(0)}'"
+    dialogs = page.get_by_role("dialog").count()
+    articles = page.locator('div[role="article"]').count()
+    return f"tytuł='{page.title()[:50]}' dialogów={dialogs} artykułów={articles} znaków={len(body)}"
+
+
+def _debug_shot(page, name: str, log) -> None:
+    try:
+        os.makedirs("debug", exist_ok=True)
+        path = os.path.join("debug", re.sub(r"[^a-z0-9]+", "-", name.lower())[:60] + ".png")
+        page.screenshot(path=path, full_page=False)
+        log(f"[harvest]   zrzut: {path}")
+    except Exception as exc:  # noqa: BLE001
+        log(f"[harvest]   zrzut nieudany: {type(exc).__name__}")
+
+
+def _close_overlays(page) -> None:
+    """Po modalu posta FB potrafi zostawić otwarty dialog — zamykamy, zanim pójdziemy dalej."""
+    for _ in range(3):
+        if page.get_by_role("dialog").count() == 0:
+            return
+        page.keyboard.press("Escape")
+        page.wait_for_timeout(700)
+
+
 def harvest(groups: list[dict], queries: dict[str, list[str]], max_age_days: float,
-            max_per_query: int = 12, headless: bool = True, log=print) -> list[dict]:
-    """Przechodzi wyszukiwarkę każdej grupy i zwraca świeże posty z permalinkami."""
+            max_per_query: int = 12, headless: bool = True, log=print,
+            time_budget_sec: int = 900) -> list[dict]:
+    """Przechodzi wyszukiwarkę każdej grupy i zwraca świeże posty z permalinkami.
+
+    `time_budget_sec` — twardy budżet na cały przebieg; po jego przekroczeniu
+    kończymy z tym, co mamy, zamiast dać się ubić limitowi runnera.
+    """
     if sync_playwright is None:
         raise RuntimeError("Brak playwright: pip install playwright && playwright install chromium")
 
     found: dict[str, dict] = {}
+    started = time.time()
     with sync_playwright() as p:
         browser, ctx, page = _open(p, headless=headless)
         try:
             _assert_logged_in(page)
             for g in groups:
                 for q in queries.get(g["market"], []):
+                    if time.time() - started > time_budget_sec:
+                        log(f"[harvest] budżet czasu ({time_budget_sec}s) wyczerpany — kończę z {len(found)} postami")
+                        return list(found.values())
                     url = f"{g['url'].rstrip('/')}/search/?q={quote(q)}"
                     log(f"[harvest] {g['name'][:40]} :: {q}")
                     page.goto(url, wait_until="domcontentloaded")
                     page.wait_for_timeout(4500)
+                    _close_overlays(page)
                     for _ in range(3):
                         page.mouse.wheel(0, 1600)
                         page.wait_for_timeout(1200)
@@ -177,6 +229,15 @@ def harvest(groups: list[dict], queries: dict[str, list[str]], max_age_days: flo
                     total = buttons.count()
                     n = min(total, max_per_query)
                     log(f"[harvest]   przycisków komentarza: {total}, sprawdzam {n}")
+                    if total == 0:
+                        state = _page_state(page)
+                        log(f"[harvest]   stan strony: {state}")
+                        _debug_shot(page, f"{g['name'][:30]}-{q}", log)
+                        if "wylogowana" in state:
+                            raise SessionExpired("Sesja wygasła w trakcie przebiegu.")
+                        if "blokada" in state:
+                            log("[harvest] Facebook pokazuje blokadę — przerywam, żeby nie pogarszać sprawy")
+                            return list(found.values())
                     for i in range(n):
                         try:
                             buttons.nth(i).scroll_into_view_if_needed()
@@ -197,8 +258,8 @@ def harvest(groups: list[dict], queries: dict[str, list[str]], max_age_days: flo
                         except Exception as exc:  # noqa: BLE001
                             log(f"[harvest]   pominięto element {i}: {type(exc).__name__}")
                         finally:
-                            page.keyboard.press("Escape")
-                            page.wait_for_timeout(900)
+                            _close_overlays(page)
+                            page.wait_for_timeout(600)
                     time.sleep(2)
         finally:
             ctx.close()
