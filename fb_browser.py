@@ -59,10 +59,48 @@ def _open(p, headless: bool = True):
     return browser, ctx, page
 
 
-def _assert_logged_in(page) -> None:
+_CONTINUE_BTN = re.compile(r"^(Kontynuuj|Continue|Weiter)\b", re.IGNORECASE)
+
+
+def _pass_account_picker(page, log=print) -> bool:
+    """Ekran 'Kontynuuj jako …' z zapisanym profilem — jedno kliknięcie wraca do sesji.
+
+    Facebook pokazuje go, gdy ta sama sesja wchodzi z nowego adresu IP (np. runner
+    GitHuba w USA). To nie jest wylogowanie: ciasteczka są ważne, konto rozpoznane.
+    Zwraca True, jeśli udało się przejść dalej.
+    """
+    try:
+        if page.locator('input[name="pass"]').count():
+            return False  # prawdziwy formularz hasła — sesja naprawdę wygasła
+        btn = page.get_by_role("button", name=_CONTINUE_BTN).first
+        if not btn.count():
+            btn = page.get_by_role("link", name=_CONTINUE_BTN).first
+        if not btn.count():
+            return False
+        log("[session] ekran 'Kontynuuj jako…' — klikam, żeby wznowić sesję")
+        btn.click()
+        page.wait_for_timeout(5000)
+        return "login" not in page.url
+    except Exception as exc:  # noqa: BLE001
+        log(f"[session] próba 'Kontynuuj' nieudana: {type(exc).__name__}")
+        return False
+
+
+def _recover_session(page, log=print) -> bool:
+    """Po trafieniu na ekran logowania: spróbuj przejść przez 'Kontynuuj' i wrócić."""
+    if _pass_account_picker(page, log):
+        return True
+    page.goto("https://www.facebook.com/", wait_until="domcontentloaded")
+    page.wait_for_timeout(3000)
+    return _pass_account_picker(page, log)
+
+
+def _assert_logged_in(page, log=print) -> None:
     page.goto("https://www.facebook.com/", wait_until="domcontentloaded")
     page.wait_for_timeout(3000)
     if "login" in page.url or page.locator('input[name="email"]').count():
+        if _pass_account_picker(page, log):
+            return
         raise SessionExpired("Facebook żąda logowania — odśwież FB_STORAGE_STATE.")
 
 
@@ -208,7 +246,7 @@ def harvest(groups: list[dict], queries: dict[str, list[str]], max_age_days: flo
     with sync_playwright() as p:
         browser, ctx, page = _open(p, headless=headless)
         try:
-            _assert_logged_in(page)
+            _assert_logged_in(page, log)
             for g in groups:
                 for q in queries.get(g["market"], []):
                     if time.time() - started > time_budget_sec:
@@ -232,12 +270,33 @@ def harvest(groups: list[dict], queries: dict[str, list[str]], max_age_days: flo
                     if total == 0:
                         state = _page_state(page)
                         log(f"[harvest]   stan strony: {state}")
-                        _debug_shot(page, f"{g['name'][:30]}-{q}", log)
                         if "wylogowana" in state:
-                            raise SessionExpired("Sesja wygasła w trakcie przebiegu.")
-                        if "blokada" in state:
+                            # ekran "Kontynuuj jako…" po zmianie IP — jedno kliknięcie i wracamy
+                            if _recover_session(page, log):
+                                page.goto(url, wait_until="domcontentloaded")
+                                page.wait_for_timeout(4500)
+                                _close_overlays(page)
+                                for _ in range(3):
+                                    page.mouse.wheel(0, 1600)
+                                    page.wait_for_timeout(1200)
+                                page.mouse.wheel(0, -20000)
+                                page.wait_for_timeout(800)
+                                buttons = page.get_by_role("button", name=_COMMENT_BTN)
+                                total = buttons.count()
+                                n = min(total, max_per_query)
+                                log(f"[harvest]   po wznowieniu sesji: {total} przycisków")
+                            else:
+                                _debug_shot(page, f"{g['name'][:30]}-{q}", log)
+                                raise SessionExpired(
+                                    "Facebook wymaga ponownego logowania (nie sam ekran 'Kontynuuj'). "
+                                    "Odśwież FB_STORAGE_STATE przez make_session.py."
+                                )
+                        elif "blokada" in state:
+                            _debug_shot(page, f"{g['name'][:30]}-{q}", log)
                             log("[harvest] Facebook pokazuje blokadę — przerywam, żeby nie pogarszać sprawy")
                             return list(found.values())
+                        else:
+                            _debug_shot(page, f"{g['name'][:30]}-{q}", log)
                     for i in range(n):
                         try:
                             buttons.nth(i).scroll_into_view_if_needed()
@@ -279,9 +338,12 @@ def publish_comment(permalink: str, text: str, headless: bool = True, log=print)
     with sync_playwright() as p:
         browser, ctx, page = _open(p, headless=headless)
         try:
-            _assert_logged_in(page)
+            _assert_logged_in(page, log)
             page.goto(permalink, wait_until="domcontentloaded")
             page.wait_for_timeout(4500)
+            if "login" in page.url and _recover_session(page, log):
+                page.goto(permalink, wait_until="domcontentloaded")
+                page.wait_for_timeout(4500)
             box = page.get_by_role(
                 "textbox", name=re.compile(r"(Skomentuj|Odpowiedz) jako", re.I)
             ).first
