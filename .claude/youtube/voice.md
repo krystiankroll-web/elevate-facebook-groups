@@ -153,6 +153,12 @@ do czego zmierzam?", końcowe „…nie?", „Słuchajcie", „tragedii nie ma",
 - **Powitanie:** „Cześć, z tej strony Krystian. Od 15 lat pracuję w branży gumy z recyklingu,
   a od 2016 roku prowadzę Pavi Sorte." Krócej, gdy liczy się tempo: „Cześć, z tej strony
   Krystian. Od 15 lat w branży gumy z recyklingu."
+- **Historia pochodzenia (od Krystiana, 10.2026):** ojciec Krystiana zaczął około 2000 roku od
+  granulatu gumowego, potem przeszedł na produkcję wyrobów formowych, a po drodze prowadził
+  sortownię surowców wtórnych. Krystian jest drugim pokoleniem w gumie z recyklingu. Używaj tego
+  jako historii („skąd to wiem"), nie jako liczby lat: lata ojca nie są stażem Krystiana ani
+  wiekiem Pavi Sorte. Szczegóły (dokładny rok, nazwa firmy ojca, związek z EWMET) — DO
+  POTWIERDZENIA przed użyciem na planszy.
 - **Lata — ustalone (10.2026), nie mieszać:** 15 lat = **osobisty** staż Krystiana w branży.
   2016 = Pavi Sorte. 2000 = EWMET (inna spółka z grupy). Nigdy „produkuję od 15 lat" ani
   „Pavi Sorte od 15 lat" — to zdania o firmie, a firma jest z 2016.
