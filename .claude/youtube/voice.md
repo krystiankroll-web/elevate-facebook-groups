@@ -157,8 +157,20 @@ do czego zmierzam?", końcowe „…nie?", „Słuchajcie", „tragedii nie ma",
   granulatu gumowego, potem przeszedł na produkcję wyrobów formowych, a po drodze prowadził
   sortownię surowców wtórnych. Krystian jest drugim pokoleniem w gumie z recyklingu. Używaj tego
   jako historii („skąd to wiem"), nie jako liczby lat: lata ojca nie są stażem Krystiana ani
-  wiekiem Pavi Sorte. Szczegóły (dokładny rok, nazwa firmy ojca, związek z EWMET) — DO
-  POTWIERDZENIA przed użyciem na planszy.
+  wiekiem Pavi Sorte. Firmy ojca to **EWMET** i **EWMET Vibro** (potwierdzone przez Krystiana).
+  Ojciec zbudował własny park maszynowy: wyroby z bloku gumowego, cięte na zimno, bez
+  formowania w wysokiej temperaturze. Stąd linia Premium (waterjet, brak fazki, płaska
+  powierzchnia) — w przeciwieństwie do Standardu z formy na gorąco.
+- **Jak mówić o technologii EWMET** (Krystian mówi to z dumy; scenariusz musi to udźwignąć
+  faktami):
+  - TAK: „cięte na zimno z bloku, bez wysokiej temperatury", „minimalna tolerancja wymiaru",
+    „maty schodzą się na styk", „technologia, którą ojciec zbudował od zera".
+  - NIE: „bez tolerancji", „zero skurczu", „najlepsze wyroby na świecie" — każdy wymiar ma
+    tolerancję, a superlatywy bez porównania łamią zasadę kanału. Liczbę tolerancji i skurczu
+    podawać tylko z karty technicznej.
+  - **Dopuszczenia kolejowe EWMET** — mocny dowód (branża kolejowa ma najostrzejsze wymagania),
+    ale tylko z nazwą konkretnego dokumentu/normy i produktu. Bez nazwy: nie używać.
+    DO POTWIERDZENIA: jaki dokument, na który produkt.
 - **Lata — ustalone (10.2026), nie mieszać:** 15 lat = **osobisty** staż Krystiana w branży.
   2016 = Pavi Sorte. 2000 = EWMET (inna spółka z grupy). Nigdy „produkuję od 15 lat" ani
   „Pavi Sorte od 15 lat" — to zdania o firmie, a firma jest z 2016.
