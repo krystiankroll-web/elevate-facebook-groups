@@ -168,9 +168,13 @@ do czego zmierzam?", końcowe „…nie?", „Słuchajcie", „tragedii nie ma",
   - NIE: „bez tolerancji", „zero skurczu", „najlepsze wyroby na świecie" — każdy wymiar ma
     tolerancję, a superlatywy bez porównania łamią zasadę kanału. Liczbę tolerancji i skurczu
     podawać tylko z karty technicznej.
-  - **Dopuszczenia kolejowe EWMET** — mocny dowód (branża kolejowa ma najostrzejsze wymagania),
-    ale tylko z nazwą konkretnego dokumentu/normy i produktu. Bez nazwy: nie używać.
-    DO POTWIERDZENIA: jaki dokument, na który produkt.
+  - **Dopuszczenia kolejowe:** EWMET jest dostawcą **PKP PLK** z kompletem dopuszczeń na
+    **elementy wibroizolacyjne i systemy tłumiące z gumy z recyklingu** (od Krystiana, 10.2026).
+    Mówić dokładnie tak: „firma mojego ojca dostarcza PKP PLK elementy wibroizolacyjne z gumy
+    z recyklingu". Dowód kompetencji grupy w gumie technicznej i tłumieniu drgań.
+    **NIE przenosić na maty podłogowe** („nasze maty mają dopuszczenia kolejowe") — dopuszczenia
+    dotyczą innych wyrobów i innego zastosowania; widz uzna to za wprowadzanie w błąd.
+    Na planszy: nazwa dopuszczenia/świadectwa — DO UZUPEŁNIENIA z dokumentów EWMET.
 - **Lata — ustalone (10.2026), nie mieszać:** 15 lat = **osobisty** staż Krystiana w branży.
   2016 = Pavi Sorte. 2000 = EWMET (inna spółka z grupy). Nigdy „produkuję od 15 lat" ani
   „Pavi Sorte od 15 lat" — to zdania o firmie, a firma jest z 2016.
