@@ -94,6 +94,36 @@ Cechy, które z tego wynikają — tak ma brzmieć scenariusz:
 - **Zaprasza do kolejnego odcinka**: „Nie będę Cię teraz tym zanudzał. Jeśli interesują Cię
   tajniki metod produkcji — daj znać, z chęcią nagram osobny odcinek."
 
+### Jak mówię przed kamerą (napisy YouTube, 10.2026)
+
+Z napisów opublikowanych odcinków: grubość `_4ksa56G3mU`, koszt `TOJk2eMMnKA`, zapach `scEUCuTitQc`.
+Opublikowane wersje różnią się od scenariuszy na Drive (np. odcinek o koszcie ma inne otwarcie
+niż `odcinek-tco-400m2-FINAL`) — źródłem prawdy o tym, co padło, są napisy, nie scenariusz.
+
+Zwroty, które są jego (najwięcej w odcinku o grubości, najmniej „czytanym"):
+„I tu jest pies pogrzebany." · „uniwersalny plasterek na każdą bolączkę" · „Masz to jak
+w banku." · „Zdziwiony? Hm, mogę tak cały dzień." · „funfle i fumfelki wpadną pomachać i porobić
+zdjęcia na Insta" · „domowe zacisze, nasze sanktuarium" · „to nie przelewki" · „Pamiętaj, nie
+tylko rozmiar ma znaczenie." · „miecz obosieczny" · „Odpal tego Excela." · „Ja znam odpowiedź." ·
+„Prowadzisz biznes po to, żeby zarabiać, prawda?" · „ludzie wszystko Ci wybaczą, ale sukcesu Ci
+nie wybaczą" · „nos skalibrowany na gumę od najmłodszych lat" · na pożegnanie „Siema."
+
+Wniosek: przed kamerą jest bardziej potoczny i zaczepny niż w scenariuszu — przysłowia,
+mrugnięcie okiem, pytanie retoryczne do widza. Scenariusz ma zostawiać na to miejsce (1–2 takie
+wtrącenia na sekcję), a nie wygładzać je do zera.
+
+### Błędy, które wyszły dopiero w opublikowanych odcinkach
+
+- **Plansza „Kanał napędza grupa…" (~20 s) w okolicach 0:15–0:35** we wszystkich trzech
+  odcinkach — przed powitaniem, dokładnie w oknie, w którym widz decyduje, czy zostaje.
+  W `/yt-script` NIE wstawiamy jej po hooku; jeśli marka musi paść — jedno zdanie w zamknięciu
+  albo podpis na ekranie. Automatyczne napisy przekręcają ją na „Pavisorte Elev FMET"
+  i „pavisorta.com" — poprawiać napisy ręcznie.
+- **Kraj pochodzenia padł mimo reguły** w dwóch odcinkach („tania 20 z Azji" — grubość;
+  „azjatyckie produkty z tej kategorii" — zapach). Reguła ze scenariusza nie wystarcza: na
+  liście „Czego nie mówimy" w każdym scenariuszu i przypomnienie przed nagraniem.
+- „Produkuję wyroby gumowe z recyklingu od 15 lat" (zapach) — patrz sekcja o latach w „Mój format".
+
 Mowa poza kamerą (spotkania): „Poczekaj, poczekaj", „Daj mi powiedzieć", „Kumasz?", „Rozumiesz,
 do czego zmierzam?", końcowe „…nie?", „Słuchajcie", „tragedii nie ma", „miejmy rękę na pulsie",
 „jak to będzie hulać". Przeklina tylko poza kamerą — w scenariuszu nie.
