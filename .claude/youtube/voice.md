@@ -4,11 +4,15 @@ Profil głosu kanału youtube.com/@krystian-kroll. Czyta go każdy skill `yt-*`.
 polsku, z promptera, z banerem Elevate w kadrze.
 
 > **Źródła (październik 2026):** scenariusze z promptera do odcinków z września 2026 (montaż mat DIY,
-> TCO 400 m², zapach v3, bezpieczeństwo, Standard vs Premium, oferta B2B „Siedem rzeczy") oraz
-> transkrypcja spotkania zespołu z 11.09.2026. **Nie** z napisów YouTube — sieć sesji ich nie
-> pobierała. Scenariusze były współpisane z AI, więc fragmenty dopisane ręką Krystiana (niżej
-> oznaczone) są lepszym wzorcem niż wygładzona reszta. Gdy będą dostępne napisy z YouTube,
-> sekcję „Jak naprawdę mówię" trzeba uzupełnić o nie: montaż wycina, a Krystian dopowiada z głowy.
+> TCO 400 m², zapach v3, bezpieczeństwo, Standard vs Premium, oferta B2B „Siedem rzeczy"),
+> **57-minutowa transkrypcja czytania scenariusza o zapachu (08.09.2026)**, w której Krystian
+> tłumaczy temat własnymi słowami i poprawia tekst, oraz transkrypcja spotkania zespołu z 11.09.2026.
+> **Nie** z napisów YouTube — sieć sesji ich nie pobierała. Scenariusze były współpisane z AI;
+> najlepszym wzorcem jest sekcja „Jak mówię bez scenariusza" i fragmenty dopisane ręką Krystiana.
+
+Opublikowane odcinki (do linkowania między odcinkami): montaż mat DIY `YHCAjgRBAUk` (07.10.2026,
+23 min) · Standard czy Premium `teK1FeyMPIs` · ile kosztuje podłoga do siłowni `TOJk2eMMnKA` ·
+jaka grubość maty na siłownię `_4ksa56G3mU`.
 
 ## Do kogo mówię
 
@@ -52,14 +56,52 @@ Fragmenty dopisane ręką Krystiana (najbliżej jego żywego głosu):
 > Jeśli prowadzisz biznes, Twoją robotą nie jest kładzenie podłogi. Twoją robotą jest
 > minimalizowanie ryzyk.
 
-Mowa spontaniczna (spotkanie, poza kamerą): „Słuchajcie", „no", „więc powiedzmy", „tragedii nie
-ma", „miejmy rękę na pulsie", „nie obudźmy się w październiku z ręką w nocniku", „zasada
-multimodalności", końcowe „…nie?" jako pytanie kontrolne. Przeklina tylko poza kamerą.
+### Jak mówię bez scenariusza
+
+Z czytania scenariusza o zapachu — Krystian tłumaczy, a nie czyta:
+
+> W skrócie: samochód osobowy ma powierzchnię styku opony z asfaltem wielkości kartki A4. Opony
+> osobowe kalibruje się na 60–80 tysięcy kilometrów, ciężarowe nawet na 300 tysięcy. Co siłą
+> rzeczy sprawia, że mieszanka opon ciężarowych jest dużo wyższej jakości.
+
+> W skrócie: w gumie technicznej jest mniej gumy w gumie. Osobowa jest dobra, ale ma styk
+> z asfaltem. Ciężarowa jest najlepsza, bo ma najwięcej mięsa.
+
+> Tam, gdzie jest człowiek, guma techniczna nie powinna mieć miejsca.
+
+> Czy ten zapach sprawia, że Twoja siłownia nie może zostać otwarta? Nie. Nadaje się. Ale prawda
+> jest taka, że pierwsze wrażenie robi się tylko raz. A w sumie dwa razy. Pierwszy i ostatni.
+
+> Jeżeli zamkniemy okna, wyłączymy klimę, położymy podłogę, no to będzie bum.
+
+> Lubię zapach diesla. Znaczy, lubię przy dystrybutorze, ale nie na dłoniach.
+
+Cechy, które z tego wynikają — tak ma brzmieć scenariusz:
+
+- **Tłumaczy przez mechanizm i analogię z codzienności** (opony, kartka A4, dystrybutor), potem
+  liczba. Zdania przy tłumaczeniu są dłuższe niż w scenariuszach — nie siekaj ich na jednozdaniowe
+  akapity.
+- **„W skrócie:"** przed puentą. **„Taka jest prawda."** · **„siłą rzeczy"** · **„z punktu
+  widzenia…"** · **„pójście na skróty"** · **„budujemy świadomość"**.
+- **Humor suchy, z autoironią**, jedno zdanie, bez puenty na siłę.
+- **Prosty język zamiast urzędowego.** Sam poprawia: „audytuje — ciężkie słowo" → „nikt tego nie
+  sprawdza". Pisz słowa, które da się powiedzieć bez zająknięcia.
+- **Precyzja faktów ponad efekt.** Sam koryguje przesadę: „nieszkodliwe — nie powiesz tak",
+  „środki antyadhezyjne stosuje się zawsze, nie tylko tam, gdzie proces jest kontrolowany".
+- **Anti-sell tak, podkopywanie własnej oferty nie.** „Nie zamawiaj u mnie" odrzucił jako „za
+  mocne, wkopujemy się". Zamiast odmowy daje wskazówkę: „podłogówka na zero, okna otwarte,
+  wentylacja na maksa — tylko miej świadomość, że zapach dalej może się pojawić".
+- **Zaprasza do kolejnego odcinka**: „Nie będę Cię teraz tym zanudzał. Jeśli interesują Cię
+  tajniki metod produkcji — daj znać, z chęcią nagram osobny odcinek."
+
+Mowa poza kamerą (spotkania): „Poczekaj, poczekaj", „Daj mi powiedzieć", „Kumasz?", „Rozumiesz,
+do czego zmierzam?", końcowe „…nie?", „Słuchajcie", „tragedii nie ma", „miejmy rękę na pulsie",
+„jak to będzie hulać". Przeklina tylko poza kamerą — w scenariuszu nie.
 
 ## Słowa, których nie używam
 
 - Kraj pochodzenia jako antagonista. Azja może paść jako miejsce, gdzie coś widziałem — nigdy jako
-  teza. Antagonistą jest **mechanizm** (brak kontroli procesu, długi łańcuch dostaw, cena za metr
+  teza — także wtedy, gdy w luźnej rozmowie pada „azjatyckie produkty". Antagonistą jest **mechanizm** (brak kontroli procesu, długi łańcuch dostaw, cena za metr
   jako jedyny parametr), nigdy grupa zawodowa, pośrednik ani nazwany konkurent.
 - „Kupuj bezpośrednio u producenta" — widz słyszy interes, nie analizę.
 - „Mamy wszystkie certyfikaty", „standardowa zgoda", „u nas jest inaczej".
@@ -109,7 +151,9 @@ multimodalności", końcowe „…nie?" jako pytanie kontrolne. Przeklina tylko 
 - **Otwarcie (0:00–0:35):** pytanie heurystyczne / sytuacja widza, **przed** powitaniem. Bez
   czołówki. Kończy się jednym pytaniem, na które odcinek odpowiada na końcu.
 - **Powitanie:** „Cześć, z tej strony Krystian. Produkuję [podłogi gumowe / wyroby gumowe
-  z recyklingu od 15 lat]." Jedno zdanie.
+  z recyklingu]." Jedno zdanie. **Liczba lat — DO USTALENIA:** w odcinkach pada „od 15 lat",
+  a marka Pavi Sorte to SINCE 2016 (grupa: EWMET od 2000). Jedna wersja wszędzie; do tego czasu
+  skill nie wpisuje liczby lat.
 - **Mój błąd (~45 s, z głowy):** historia, w której to my coś przeoczyliśmy, zakończona „Od tamtej
   pory…". Do tej historii wracam w klamrze na końcu.
 - **Zdanie nośne:** jedno zdanie, które pada na początku i na końcu dosłownie.
