@@ -19,7 +19,7 @@ about the words on screen, not a claim about why the video worked.
 import json, os, re, statistics, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-FORMULAS = json.load(open(os.path.join(HERE, "..", "yt-script", "hooks.json")))["hooks"]
+FORMULAS = json.load(open(os.path.join(HERE, "..", "yt-script", "hooks.json"), encoding="utf-8"))["hooks"]
 
 def classify(title):
     scored = []

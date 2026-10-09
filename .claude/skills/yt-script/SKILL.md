@@ -26,7 +26,10 @@ python3 hookscore.py --hook "one line"      # score a single one
    does not exist, ask for **three of their own videos**, read or transcribe them, infer the voice,
    and write the file. A script in the wrong voice is worse than no script, because they have to
    read it out loud.
-2. Never invent a number, a result or a source. If a figure would strengthen it and you do not have
+2. Write the hooks and the script in the language the user records in (Polish for this channel).
+   `hookscore.py` scores Polish and English; its Polish panels are uncalibrated, so treat the score
+   as a sanity check and rely on the formula and your own read more than the number.
+3. Never invent a number, a result or a source. If a figure would strengthen it and you do not have
    one, ask for it or write the line without it.
 
 ## The shape

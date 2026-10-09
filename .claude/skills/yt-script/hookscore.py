@@ -13,29 +13,45 @@ WHAT THIS CAN AND CANNOT TELL YOU. Measured against 74 real short-form hooks (fi
 auto-captions, top-8 and bottom-8 by views across five channels): it separates deliberately bad
 hooks from real ones well, and it separates a creator's own hits from their own misses barely at
 all. Treat a low score as a reason to look again, never a high score as a promise.
+
+POLISH. The word panels and formula patterns also carry Polish stems, matched as prefixes because
+of inflection. They have not been calibrated against real Polish hooks: same caveat, only more so.
 """
 import json, os, re, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-FORMULAS = json.load(open(os.path.join(HERE, "hooks.json")))["hooks"]
+FORMULAS = json.load(open(os.path.join(HERE, "hooks.json"), encoding="utf-8"))["hooks"]
 
 FILLER = {"basically","actually","literally","just","really","very","so","kind","sort","like",
           "guys","hey","welcome","today","video","subscribe","channel"}
 VAGUE = {"amazing","incredible","insane","crazy","huge","massive","game","changer","secret",
          "powerful","ultimate","best","revolutionary","mind","blowing","unbelievable"}
+# Polish: inflection makes exact word sets useless, so these are stems matched as prefixes.
+FILLER_PL = ("generalnie","właściwie","jakby","dosłownie","bardzo","prostu","cześć","witam","witajcie",
+             "hej","dziś","dzisiaj","odcin","subskryb","kanał")
+VAGUE_PL = ("niesamowi","niewiaryg","szalon","ogromn","gigantyczn","sekret","potężn","najlepsz","rewolucyjn",
+            "kosmiczn","mega","petard","genialn","magiczn","wyjątkow","innowacyjn","kompleksow")
 CONCRETE = re.compile(r"\b(\d[\d,.]*\s?(%|k|m|x|s|m|h)?|\$\d|\d+\s?(second|minute|hour|day|week|month|year)s?)\b", re.I)
-YOU = re.compile(r"\b(you|your|you're|youre|yourself)\b", re.I)
-STAKE = re.compile(r"\b(lose|lost|wasting|waste|quit|fail|broke|cost|risk|before|stop|never|die|dying|dead)\b", re.I)
-CURIOSITY = re.compile(r"\b(why|how|what|which|until|before|but|nobody|almost|except|reason|actually)\b", re.I)
+YOU = re.compile(r"\b(you|your|you're|youre|yourself"
+                 r"|ty|ciebie|cię|tobie|twój|twoj\w*|twoi\w*|wasz\w*|wam"
+                 # 2nd person verbs: tracisz, płacisz, wiesz, straciłeś, kupiliście, macie
+                 r"|(?!nasz\b)\w{2,}(asz|esz|isz|ysz)|\w+(łeś|łaś|liście|łyście)"
+                 r"|macie|wiecie|jesteście|możecie|chcecie|musicie|płacicie|tracicie|robicie|kupujecie)\b", re.I)
+STAKE = re.compile(r"\b(lose|lost|wasting|waste|quit|fail|broke|cost|risk|before|stop|never|die|dying|dead"
+                   r"|(trac|strac|utrac|przepłac|dopłac|koszt|ryzyk|błęd|błąd|awari|wymian|wymieni|zniszcz|pęk"
+                   r"|zepsu|psuj|reklamacj|strat|zanim|przesta|nigdy|wyrzuc|upad|bankrut|zużyci|zużyw|napraw)\w*)\b", re.I)
+CURIOSITY = re.compile(r"\b(why|how|what|which|until|before|but|nobody|almost|except|reason|actually"
+                       r"|dlaczego|czemu|jak|co|któr\w*|dopóki|zanim|ale|nikt|nikomu|nikogo|prawie|oprócz"
+                       r"|powód|powodu|naprawdę|wcale)\b", re.I)
 
-def words(t): return re.findall(r"[a-z0-9'%$.]+", t.lower())
+def words(t): return re.findall(r"[\w'%$.]+", t.lower())
 
 def specificity(t):
     w = words(t)
     if not w: return 0
     nums = len(CONCRETE.findall(t))
-    vague = sum(1 for x in w if x in VAGUE)
-    filler = sum(1 for x in w if x in FILLER)
+    vague = sum(1 for x in w if x in VAGUE or x.startswith(VAGUE_PL))
+    filler = sum(1 for x in w if x in FILLER or x.startswith(FILLER_PL))
     s = 34 + nums * 22 - vague * 16 - filler * 5
     # proper nouns that are not sentence-initial read as named things
     s += min(18, 6 * sum(1 for x in t.split()[1:] if x[:1].isupper()))
@@ -54,7 +70,7 @@ def curiosity(t):
     n = len(CURIOSITY.findall(t))
     q = 18 if t.strip().endswith("?") else 0
     # a hook that resolves itself has no gap left
-    closed = -18 if re.search(r"\b(because|so that|which means)\b", t, re.I) else 0
+    closed = -18 if re.search(r"\b(because|so that|which means|bo|ponieważ|dlatego że|co oznacza|czyli|więc)\b", t, re.I) else 0
     return max(0, min(100, 24 + n * 17 + q + closed))
 
 def brevity(t):
@@ -90,16 +106,16 @@ def report(t, parts, verdict, name, hits):
     for k, v in parts.items():
         print(f"    {k:<12} {v:3d}  {'#' * (v // 5)}")
     print(f"    {'VERDICT':<12} {verdict:3d}  {band(verdict)}")
-    print(f"    formula      {name}" + (f"  ({hits} pattern{'s' if hits != 1 else ''} matched)" if hits else "  (no formula matched - that is usually a summary, not a hook)"))
+    print(f"    formula      {name}" + (f"  ({hits} pattern{'s' if hits != 1 else ''} matched)" if hits else "  (żadna formuła nie pasuje - to zwykle streszczenie, nie hook)"))
     low = min(parts, key=parts.get)
     print(f"    weakest      {low} - {FIX[low]}")
 
 FIX = {
- "SPECIFICITY": "swap one adjective for a number, a name or a date",
- "ADDRESS": "say 'you' in the first six words",
- "STAKES": "name what it costs them to keep doing it the current way",
- "CURIOSITY": "cut the half of the sentence that answers itself",
- "BREVITY": "9 to 24 words. Read it out loud and stop where you run out of breath",
+ "SPECIFICITY": "zamień jeden przymiotnik na liczbę, nazwę albo datę",
+ "ADDRESS": "zwróć się do widza (ty / tracisz / płacisz) w pierwszych sześciu słowach",
+ "STAKES": "nazwij, ile kosztuje go dalsze robienie tego po staremu",
+ "CURIOSITY": "utnij tę połowę zdania, która sama sobie odpowiada",
+ "BREVITY": "9-24 słowa. Przeczytaj na głos i skończ tam, gdzie kończy się oddech",
 }
 
 def main():
@@ -109,7 +125,7 @@ def main():
     if "--hook" in a:
         lines = [a[a.index("--hook") + 1]]
     elif a and os.path.exists(a[0]):
-        lines = [l for l in open(a[0]).read().splitlines() if l.strip()]
+        lines = [l for l in open(a[0], encoding="utf-8").read().splitlines() if l.strip()]
     else:
         print(__doc__); sys.exit(1 if not a else 0)
     out = []

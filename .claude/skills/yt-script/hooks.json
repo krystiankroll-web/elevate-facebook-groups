@@ -18,7 +18,10 @@
    "match": [
     "\\b\\d+(\\.\\d+)?\\s?%",
     "\\b\\d+ (out of|in) \\d+\\b",
-    "\\b\\d{2,}(,\\d{3})+\\b"
+    "\\b\\d{2,}(,\\d{3})+\\b",
+    "\\b\\d+ (na|z) \\d+\\b",
+    "\\b\\d{1,3}( \\d{3})+\\b",
+    "\\bco (drug|trzec|czwart|piąt)\\w+\\b"
    ]
   },
   {
@@ -30,7 +33,10 @@
    "match": [
     "\\bthis (channel|guy|creator|account)\\b",
     "\\bwent from .* to\\b",
-    "\\bin (a|one|two|three|\\d+) (week|month|year)s?\\b"
+    "\\bin (a|one|two|three|\\d+) (week|month|year)s?\\b",
+    "\\b(ten|ta|to) (kanał|firma|klient|inwestor|gość|facet|obiekt|klub|siłownia)\\b",
+    "\\bprzesz(edł|ła|li|ło)\\w* z\\b",
+    "\\bw (ciągu )?(\\d+|jedn\\w*|dwa|dwóch|trzy|trzech) (tydz|tygod|miesi|rok|lat)\\w*\\b"
    ]
   },
   {
@@ -42,7 +48,11 @@
    "match": [
     "\\byou('re| are) (probably |still )?(doing|making)\\b",
     "\\bthe (mistake|reason) (everyone|most people|nobody)\\b",
-    "\\bstop (doing )?\\b"
+    "\\bstop (doing )?\\b",
+    "\\b(robisz|popełniasz|robicie|popełniacie)\\b",
+    "\\b(błąd|błędu|błędem),? (który|którego|jaki)\\b",
+    "\\bten sam błąd\\b",
+    "\\bprzesta(ń|ńcie)\\b"
    ]
   },
   {
@@ -54,7 +64,11 @@
    "match": [
     "\\beveryone (says|thinks|tells you)\\b",
     "\\bis (actually )?wrong\\b",
-    "\\bnobody (tells|talks about)\\b"
+    "\\bnobody (tells|talks about)\\b",
+    "\\bwszyscy (mówią|myślą|twierdzą|radzą)\\b",
+    "\\b(bzdura|mit|nieprawda)\\b",
+    "\\bnikt (ci )?(nie )?(mówi|powie)\\w*\\b",
+    "\\bmyl(isz|icie|ą) się\\b"
    ]
   },
   {
@@ -66,7 +80,10 @@
    "match": [
     "\\bI('m| am) going to show you\\b",
     "\\bhere('s| is) (the|exactly)\\b",
-    "\\bon screen\\b"
+    "\\bon screen\\b",
+    "\\bpoka(żę|zuję|żemy)\\b",
+    "\\boto (dokładnie|jak|co)\\b",
+    "\\bna ekranie\\b"
    ]
   },
   {
@@ -77,7 +94,10 @@
    "fails_when": "Superlatives are cheap. Earn it by naming what it beat.",
    "match": [
     "\\bthe (best|worst|fastest|easiest|only)\\b",
-    "\\bnumber one\\b"
+    "\\bnumber one\\b",
+    "\\bnaj\\w{3,}\\b",
+    "\\bjedyn\\w+\\b",
+    "\\bnumer (jeden|1)\\b"
    ]
   },
   {
@@ -89,7 +109,10 @@
    "match": [
     "\\bin (the next )?\\d+ (seconds|minutes|hours)\\b",
     "\\bby the end of this video\\b",
-    "\\bunder \\d+\\b"
+    "\\bunder \\d+\\b",
+    "\\bw (ciągu )?(następnych )?\\d+ (sekund|minut|godzin)\\w*\\b",
+    "\\bdo końca (tego )?(filmu|odcinka)\\b",
+    "\\bponiżej \\d+\\b"
    ]
   },
   {
@@ -101,7 +124,10 @@
    "match": [
     "\\bI (tried|spent|tested|let|gave)\\b",
     "\\bfor \\d+ (days|weeks|months)\\b",
-    "\\bso you don'?t have to\\b"
+    "\\bso you don'?t have to\\b",
+    "\\b(sprawdzi|testowa|przetestowa|wyda|spróbowa|kład|położy|zrobi)\\w*(łem|łam|liśmy|łyśmy)\\b",
+    "\\bprzez \\d+ (dni|tygod\\w*|miesi\\w*|lat)\\b",
+    "\\bżeby(ś|ście) (ty |wy )?nie (musiał|musieli)\\w*\\b"
    ]
   },
   {
@@ -112,7 +138,8 @@
    "fails_when": "Must be the viewer's question, not yours. Pull it from your own comments.",
    "match": [
     "^(why|how|what|when|should|can|do|does|is)\\b",
-    "\\?\\s*$"
+    "\\?\\s*$",
+    "^(dlaczego|czemu|jak|co|kiedy|czy|ile|któr\\w+)\\b"
    ]
   },
   {
@@ -124,7 +151,10 @@
    "match": [
     "\\bbefore\\b.*\\bafter\\b",
     "\\bthis was\\b.*\\bthis is\\b",
-    "\\bused to\\b"
+    "\\bused to\\b",
+    "\\bprzed\\b.*\\bpo\\b",
+    "\\bkiedyś\\b.*\\bteraz\\b",
+    "\\bwcześniej\\b.*\\bteraz\\b"
    ]
   },
   {
@@ -137,7 +167,10 @@
     "\\b(broke|break|breaking) (it )?down\\b",
     "\\bteardown\\b",
     "\\banalys(ed|ed|is|e)\\b",
-    "\\bI pulled\\b"
+    "\\bI pulled\\b",
+    "\\brozkła\\w* na części\\b",
+    "\\brozebra\\w*\\b",
+    "\\b(prze)?analiz\\w*\\b"
    ]
   },
   {
@@ -149,7 +182,9 @@
    "match": [
     "\\b\\w+ (plus|\\+) \\w+\\b",
     "\\bcombine\\b",
-    "\\btogether\\b"
+    "\\btogether\\b",
+    "\\bpołącz\\w*\\b",
+    "\\brazem\\b"
    ]
   },
   {
@@ -162,7 +197,11 @@
     "\\bdo not\\b",
     "\\bdon'?t (upload|post|publish|start)\\b",
     "\\bbefore you\\b",
-    "\\bstop\\b"
+    "\\bstop\\b",
+    "\\bnie (kupuj|kładź|zamawiaj|montuj|podpisuj|wybieraj|rób)\\w*\\b",
+    "\\bzanim (kupisz|położysz|zamówisz|wybierzesz|podpiszesz|zaczniesz)\\b",
+    "\\buwaga\\b",
+    "\\bprzesta(ń|ńcie)\\b"
    ]
   },
   {
@@ -173,7 +212,8 @@
    "fails_when": "The count must be exact and every item must be different in kind.",
    "match": [
     "^\\d+ \\w+",
-    "\\b(here are|these are) \\d+\\b"
+    "\\b(here are|these are) \\d+\\b",
+    "\\b(oto|to są) \\d+\\b"
    ]
   },
   {
@@ -186,7 +226,11 @@
     "\\bthis is (the|my)\\b",
     "\\bscreenshot\\b",
     "\\bproof\\b",
-    "\\breceipts?\\b"
+    "\\breceipts?\\b",
+    "\\bto (jest )?(mój|moja|moje|nasz|nasza|nasze)\\b",
+    "\\bzrzut\\w* ekranu\\b",
+    "\\bdow(ód|ody|odem)\\b",
+    "\\bfaktur\\w*\\b"
    ]
   },
   {
@@ -198,7 +242,10 @@
    "match": [
     "\\b(nobody|almost nobody|most people) (knows?|opens?|uses?)\\b",
     "\\bhidden\\b",
-    "\\bburied\\b"
+    "\\bburied\\b",
+    "\\b(nikt|prawie nikt|mało kto|większość( ludzi)?) (nie )?(wie|zna|otwiera|używa|sprawdza|liczy)\\w*\\b",
+    "\\bukryt\\w*\\b",
+    "\\bzakopan\\w*\\b"
    ]
   },
   {
@@ -211,7 +258,10 @@
     "\\bwithout\\b",
     "\\bnever\\b",
     "\\bin one\\b",
-    "\\bzero\\b"
+    "\\bzero\\b",
+    "\\bbez\\b",
+    "\\bnigdy\\b",
+    "\\bw jeden\\b"
    ]
   },
   {
@@ -224,7 +274,10 @@
     "\\bvs\\.?\\b",
     "\\bversus\\b",
     "\\bwhich (one )?(is|wins)\\b",
-    "\\bsame .* (three|two) ways\\b"
+    "\\bsame .* (three|two) ways\\b",
+    "\\bkontra\\b",
+    "\\bktór\\w+ (jest )?(lepsz|wygryw|tańsz)\\w*\\b",
+    "\\bporówna\\w*\\b"
    ]
   },
   {
@@ -236,7 +289,10 @@
    "match": [
     "\\bevery (video|post) .* starts\\b",
     "\\bit all (starts|started)\\b",
-    "\\bthe (real )?reason\\b"
+    "\\bthe (real )?reason\\b",
+    "\\bwszystko (zaczyna|zaczęło) się\\b",
+    "\\b(prawdziwy )?powód\\b",
+    "\\bskąd się\\b"
    ]
   },
   {
@@ -249,7 +305,11 @@
     "\\b(this|next) (week|month|year)\\b",
     "\\bis changing\\b",
     "\\bno longer\\b",
-    "\\bas of\\b"
+    "\\bas of\\b",
+    "\\b(tym|przyszłym) (tygodniu|miesiącu|roku)\\b",
+    "\\bzmienia się\\b",
+    "\\bjuż nie\\b",
+    "\\bod (stycznia|lutego|marca|kwietnia|maja|czerwca|lipca|sierpnia|września|października|listopada|grudnia|\\d{4})\\b"
    ]
   },
   {
@@ -261,7 +321,9 @@
    "match": [
     "^if you\\b",
     "\\bfor (anyone|everyone|people) who\\b",
-    "\\byou specifically\\b"
+    "\\byou specifically\\b",
+    "^(jeśli|jeżeli) (jesteś|masz|prowadzisz|zarządzasz|kupujesz|budujesz|planujesz)\\b",
+    "\\bdla (każdego|wszystkich|ludzi|osób),? (kto|którzy|które)\\b"
    ]
   }
  ]
