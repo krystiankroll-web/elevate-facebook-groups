@@ -116,8 +116,9 @@ wtrącenia na sekcję), a nie wygładzać je do zera.
 
 - **Plansza „Kanał napędza grupa…" (~20 s) w okolicach 0:15–0:35** we wszystkich trzech
   odcinkach — przed powitaniem, dokładnie w oknie, w którym widz decyduje, czy zostaje.
-  **Decyzja Krystiana (10.2026): planszę usuwamy — „nie chwalimy się tym".** W `/yt-script`
-  nie ma jej nigdzie; marka najwyżej jako podpis na ekranie przy powitaniu. Automatyczne napisy przekręcają ją na „Pavisorte Elev FMET"
+  **Decyzja Krystiana (10.2026): plansza zostaje.** `/yt-script` jej nie pisze (wstawia ją
+  montaż), ale hook i zapowiedź mają przed nią domknąć pytanie odcinka, żeby widz wiedział,
+  na co czeka. Automatyczne napisy przekręcają ją na „Pavisorte Elev FMET"
   i „pavisorta.com" — poprawiać napisy ręcznie.
 - **Kraj pochodzenia padł mimo reguły** w dwóch odcinkach („tania 20 z Azji" — grubość;
   „azjatyckie produkty z tej kategorii" — zapach). Reguła ze scenariusza nie wystarcza: na
