@@ -150,10 +150,12 @@ do czego zmierzam?", końcowe „…nie?", „Słuchajcie", „tragedii nie ma",
   (maty w przekroju, próbki) i planszami, które czytam („[Krystian czyta]").
 - **Otwarcie (0:00–0:35):** pytanie heurystyczne / sytuacja widza, **przed** powitaniem. Bez
   czołówki. Kończy się jednym pytaniem, na które odcinek odpowiada na końcu.
-- **Powitanie:** „Cześć, z tej strony Krystian. Produkuję [podłogi gumowe / wyroby gumowe
-  z recyklingu]." Jedno zdanie. **Liczba lat — DO USTALENIA:** w odcinkach pada „od 15 lat",
-  a marka Pavi Sorte to SINCE 2016 (grupa: EWMET od 2000). Jedna wersja wszędzie; do tego czasu
-  skill nie wpisuje liczby lat.
+- **Powitanie:** „Cześć, z tej strony Krystian. Od 15 lat pracuję w branży gumy z recyklingu,
+  a od 2016 roku prowadzę Pavi Sorte." Krócej, gdy liczy się tempo: „Cześć, z tej strony
+  Krystian. Od 15 lat w branży gumy z recyklingu."
+- **Lata — ustalone (10.2026), nie mieszać:** 15 lat = **osobisty** staż Krystiana w branży.
+  2016 = Pavi Sorte. 2000 = EWMET (inna spółka z grupy). Nigdy „produkuję od 15 lat" ani
+  „Pavi Sorte od 15 lat" — to zdania o firmie, a firma jest z 2016.
 - **Mój błąd (~45 s, z głowy):** historia, w której to my coś przeoczyliśmy, zakończona „Od tamtej
   pory…". Do tej historii wracam w klamrze na końcu.
 - **Zdanie nośne:** jedno zdanie, które pada na początku i na końcu dosłownie.
