@@ -245,7 +245,8 @@
     "\\bburied\\b",
     "\\b(nikt|prawie nikt|mało kto|większość( ludzi)?) (nie )?(wie|zna|otwiera|używa|sprawdza|liczy)\\w*\\b",
     "\\bukryt\\w*\\b",
-    "\\bzakopan\\w*\\b"
+    "\\bzakopan\\w*\\b",
+    "\\bnie wie(sz|dzą)? o tym\\b"
    ]
   },
   {

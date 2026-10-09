@@ -31,7 +31,12 @@ FILLER_PL = ("generalnie","właściwie","jakby","dosłownie","bardzo","prostu","
              "hej","dziś","dzisiaj","odcin","subskryb","kanał")
 VAGUE_PL = ("niesamowi","niewiaryg","szalon","ogromn","gigantyczn","sekret","potężn","najlepsz","rewolucyjn",
             "kosmiczn","mega","petard","genialn","magiczn","wyjątkow","innowacyjn","kompleksow")
-CONCRETE = re.compile(r"\b(\d[\d,.]*\s?(%|k|m|x|s|m|h)?|\$\d|\d+\s?(second|minute|hour|day|week|month|year)s?)\b", re.I)
+CONCRETE = re.compile(r"\b(\d[\d,.]*\s?(%|k|m|x|s|m|h)?|\$\d|\d+\s?(second|minute|hour|day|week|month|year)s?"
+                      # Polish numbers spelled out, as they are written for the teleprompter
+                      r"|dw(a|ie|óch|unast\w*|adzieśc\w*|ieście)|trz(y|ech|ynast\w*|ydzieśc\w*|ysta)"
+                      r"|czter(y|ech|nast\w*|dzieśc\w*|ysta)|pięć\w*|pięci\w*|sześć\w*|sześci\w*"
+                      r"|siedem\w*|siedmi\w*|osiem\w*|ośmi\w*|dziewięć\w*|dziewięci\w*|dziesięć|dziesięci\w*"
+                      r"|sto|stu|tysi\w+|milion\w*)\b", re.I)
 YOU = re.compile(r"\b(you|your|you're|youre|yourself"
                  r"|ty|ciebie|cię|tobie|twój|twoj\w*|twoi\w*|wasz\w*|wam"
                  # 2nd person verbs: tracisz, płacisz, wiesz, straciłeś, kupiliście, macie
@@ -39,7 +44,8 @@ YOU = re.compile(r"\b(you|your|you're|youre|yourself"
                  r"|macie|wiecie|jesteście|możecie|chcecie|musicie|płacicie|tracicie|robicie|kupujecie)\b", re.I)
 STAKE = re.compile(r"\b(lose|lost|wasting|waste|quit|fail|broke|cost|risk|before|stop|never|die|dying|dead"
                    r"|(trac|strac|utrac|przepłac|dopłac|koszt|ryzyk|błęd|błąd|awari|wymian|wymieni|zniszcz|pęk"
-                   r"|zepsu|psuj|reklamacj|strat|zanim|przesta|nigdy|wyrzuc|upad|bankrut|zużyci|zużyw|napraw)\w*)\b", re.I)
+                   r"|zepsu|psuj|reklamacj|strat|zanim|przesta|nigdy|wyrzuc|upad|bankrut|zużyci|zużyw|napraw"
+                   r"|finansuj|płac|zapłac|droż|rachun|zamroż)\w*)\b", re.I)
 CURIOSITY = re.compile(r"\b(why|how|what|which|until|before|but|nobody|almost|except|reason|actually"
                        r"|dlaczego|czemu|jak|co|któr\w*|dopóki|zanim|ale|nikt|nikomu|nikogo|prawie|oprócz"
                        r"|powód|powodu|naprawdę|wcale)\b", re.I)
