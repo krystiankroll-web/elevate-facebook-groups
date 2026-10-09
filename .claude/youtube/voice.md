@@ -112,6 +112,9 @@ Wniosek: przed kamerą jest bardziej potoczny i zaczepny niż w scenariuszu — 
 mrugnięcie okiem, pytanie retoryczne do widza. Scenariusz ma zostawiać na to miejsce (1–2 takie
 wtrącenia na sekcję), a nie wygładzać je do zera.
 
+**Zasada (Krystian, 10.2026): opublikowanych filmów nie zmieniamy** — ani tytułów, ani opisów,
+ani miniatur. Wnioski z audytów idą wyłącznie do kolejnych odcinków.
+
 ### Błędy, które wyszły dopiero w opublikowanych odcinkach
 
 - **Plansza „Kanał napędza grupa…" (~20 s) w okolicach 0:15–0:35** we wszystkich trzech
